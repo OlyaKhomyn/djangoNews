@@ -22,11 +22,13 @@ class PostSerializer(serializers.ModelSerializer):
         title = validated_data.get("title")
         link = validated_data.get("link")
         author_name = validated_data.get("author_name")
-        return Post.objects.create(title=title, link=link, author_name=author_name)
+        return Post.objects.create(title=title, link=link,
+                                   author_name=author_name)
 
     def update(self, instance, validated_data):
         instance.title = validated_data.get("title", instance.title)
         instance.link = validated_data.get("link", instance.link)
-        instance.author_name = validated_data.get("author_name", instance.author_name)
+        instance.author_name = validated_data.get("author_name",
+                                                  instance.author_name)
         instance.save()
         return instance

@@ -7,7 +7,8 @@ class Comment(models.Model):
     author_name = models.CharField(max_length=50)
     content = models.TextField()
     created = models.DateField(auto_now_add=True)
-    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name="comments",
+                             on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ["id", "post"]
